@@ -1,7 +1,9 @@
-FROM php:7.0-alpine
+FROM ubuntu:18.04
 
 
-RUN adduser && \
-    apk add curl && \
+RUN apk add curl && \
     curl -sS https://getcomposer.org/installer | php && \
-    mv composer.phar /usr/local/bin/composer
+    mv composer.phar /usr/local/bin/composer && \
+    adduser libreria
+USER libreria
+WORKDIR /libreria/app
