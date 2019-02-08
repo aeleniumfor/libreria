@@ -1,0 +1,13 @@
+version: "3"
+services:
+  nginx:
+    imgage: nginx
+    ports:
+      - "8080:80"
+    link:
+      - php
+
+  php:
+    image: php:7-fpm
+    volumes:
+      - ./php:/php
