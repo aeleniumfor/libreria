@@ -6,11 +6,16 @@ if [ $1 = "build" ]; then
     docker exec $dockerid /bin/bash -c "adduser libreria"
     docker exec $dockerid /bin/bash -c "apt update && apt install -y git zip unzip"
     docker exec $dockerid /bin/bash -c "su libreria && composer install"
-
-    docker run --rm -d -p 8081:80 -v $(pwd)/nginx/default.conf:/etc/nginx/conf.d/default.conf nginx
+    
 elif [ $1 = "exec" ]; then
+
     dockerid=$(docker ps --filter name=libreria --format "{{.ID}}")
+    dockerenv=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' $dockerid)
+     docker run --rm -d -e FPMHOST=$dockerenv -p 8081:80 -v $(pwd)/nginx/default.conf:/etc/nginx/conf.d/default.conf nginx
     docker exec -it $dockerid /bin/bash
+
+elif [ $1 = "stop" ]; then
+    docker stop $(docker ps -aq)
 else
     echo $dockerid
 fi
