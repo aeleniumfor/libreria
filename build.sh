@@ -6,7 +6,7 @@ if [ $1 = "build" ]; then
     docker exec $dockerid /bin/bash -c "apt update && apt install -y git zip unzip"
     docker exec $dockerid /bin/bash -c "su libreria && composer install"
 elif [ $1 = "stop" ]; then
-    docker stop $(docker ps -aq)
+    docker-compose down -v
 else
     echo $dockerid
 fi
