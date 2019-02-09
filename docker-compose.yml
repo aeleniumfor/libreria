@@ -15,8 +15,15 @@ services:
     volumes:
       - ./php:/var/www/html
     # command: >
-    #   /bin/bash -c "apt update && apt install -y git zip unzip && 
-    #   curl -sS https://getcomposer.org/installer | php && 
-    #   mv composer.phar /usr/local/bin/composer && 
-    #   adduser libreria su libreria && 
+    #   /bin/bash -c "apt update && apt install -y git zip unzip &&
+    #   curl -sS https://getcomposer.org/installer | php &&
+    #   mv composer.phar /usr/local/bin/composer &&
+    #   adduser libreria su libreria &&
     #   composer install"
+  vue:
+    build: ./vue/.
+    ports:
+      - 8088:9000
+    volumes:
+      - ./vue/app:/app
+    tty: true
