@@ -14,11 +14,11 @@ services:
     image: php:7-fpm
     volumes:
       - ./php:/var/www/html
-      
+
   elm:
-  build: ./elm/.
-  ports:
-    - 8088:8080
-  volumes:
-    - ./epm/app:/app
-  tty: true
+    build: ./elm/.
+    ports:
+      - 8088:8080
+    volumes:
+      - ./elm/app:/app
+    tty: true
