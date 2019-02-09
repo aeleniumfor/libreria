@@ -4,5 +4,5 @@ WORKDIR /app
 
 RUN apk update && \
     npm install -g npm && \
-    npm install -g @vue/cli
+    yarn add elm
 EXPOSE 9000

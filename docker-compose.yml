@@ -14,16 +14,11 @@ services:
     image: php:7-fpm
     volumes:
       - ./php:/var/www/html
-    # command: >
-    #   /bin/bash -c "apt update && apt install -y git zip unzip &&
-    #   curl -sS https://getcomposer.org/installer | php &&
-    #   mv composer.phar /usr/local/bin/composer &&
-    #   adduser libreria su libreria &&
-    #   composer install"
-  vue:
-    build: ./vue/.
-    ports:
-      - 8088:8080
-    volumes:
-      - ./vue/app:/app
-    tty: true
+      
+  elm:
+  build: ./elm/.
+  ports:
+    - 8088:8080
+  volumes:
+    - ./epm/app:/app
+  tty: true
