@@ -18,7 +18,8 @@ services:
   elm:
     build: ./elm/.
     ports:
-      - 8088:8080
+      - 8088:8000
     volumes:
       - ./elm/app:/app
     tty: true
+

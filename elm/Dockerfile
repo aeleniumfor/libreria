@@ -4,5 +4,5 @@ WORKDIR /app
 
 RUN apk update && \
     npm install -g npm && \
-    yarn add elm
+    npm i -g elm --unsafe-perm=true --allow-root
 EXPOSE 9000
