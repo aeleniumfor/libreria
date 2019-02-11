@@ -18,7 +18,7 @@ init =
 
 -- UPDATE
 
-type Msg = Increment | Decrement
+type Msg = Increment | Decrement | C
 
 update : Msg -> Model -> Model
 update msg model =
@@ -28,6 +28,9 @@ update msg model =
 
     Decrement ->
       model - 1
+    
+    C ->
+      0
 
 
 -- VIEW
@@ -38,4 +41,5 @@ view model =
     [ button [ onClick Decrement ] [ text "-" ]
     , div [] [ text (String.fromInt model) ]
     , button [ onClick Increment ] [ text "+" ]
+    , button [ onClick C] [text "C"]
     ]
