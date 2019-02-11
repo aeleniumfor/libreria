@@ -1,4 +1,6 @@
-import Html exposing (..)
+import Browser
+import Html exposing (Html, button, div, text)
+import Html.Events exposing (onClick)
 
 
 main =
@@ -6,7 +8,18 @@ main =
 
 
 -- MODEL
-type Msg = Increment | Decrement | Sde
+
+type alias Model = Int
+
+init : Model
+init =
+  0
+
+
+-- UPDATE
+
+type Msg = Increment | Decrement
+
 update : Msg -> Model -> Model
 update msg model =
   case msg of
@@ -15,22 +28,14 @@ update msg model =
 
     Decrement ->
       model - 1
-    
-    Sde ->
-      model * 2
--- UPDATE
-
-type Msg = Reset | ...
-
-update : Msg -> Model -> Model
-update msg model =
-  case msg of
-    Reset -> ...
-    ...
 
 
 -- VIEW
 
 view : Model -> Html Msg
 view model =
-  ...
+  div []
+    [ button [ onClick Decrement ] [ text "-" ]
+    , div [] [ text (String.fromInt model) ]
+    , button [ onClick Increment ] [ text "+" ]
+    ]
